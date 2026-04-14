@@ -50,6 +50,59 @@
       display: flex;
       gap: 1.5rem;
     }
+
+    /* ── FALLSCHIRMJÄGER ── */
+    .fallschirm {
+      background: linear-gradient(135deg, var(--dark) 0%, #2a3a1a 100%);
+      color: #fff;
+      padding: 4rem 2rem;
+    }
+    .fallschirm .section-title { color: #fff; }
+    .fallschirm .section-sub   { color: #bbb; }
+    .fallschirm .underline     { background: var(--sand); }
+    .fj-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      align-items: center;
+    }
+    @media (max-width: 700px) { .fj-grid { grid-template-columns: 1fr; } }
+    .fj-badge {
+      text-align: center;
+      font-size: 9rem;
+      line-height: 1;
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.5));
+    }
+    .fj-content h3 {
+      font-size: 1.4rem;
+      color: var(--sand);
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .fj-content p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      opacity: 0.85;
+      margin-bottom: 1rem;
+    }
+    .fj-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    .fj-fact {
+      background: rgba(200,185,122,0.15);
+      border: 1px solid var(--sand);
+      border-radius: 4px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.82rem;
+      color: var(--sand);
+      letter-spacing: 0.5px;
+    }
     nav ul a {
       color: #ccc;
       text-decoration: none;
@@ -235,6 +288,7 @@
     </div>
     <ul>
       <li><a href="#truppen">Truppengattungen</a></li>
+      <li><a href="#fallschirm">Fallschirmjäger</a></li>
       <li><a href="#werte">Werte</a></li>
       <li><a href="#karriere">Karriere</a></li>
     </ul>
@@ -287,6 +341,36 @@
         <div class="card-body">
           <h3>Cyber & Informationsraum</h3>
           <p>Moderne Kriege werden auch digital geführt. Die CIR-Teilstreitkraft schützt Deutschlands Netzwerke und kritische Infrastruktur.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FALLSCHIRMJÄGER -->
+  <section id="fallschirm" class="fallschirm">
+    <div class="section-title">Fallschirmjäger</div>
+    <div class="underline"></div>
+    <p class="section-sub">Deutschlands schnelle Eingreiftruppe – aus der Luft, hinter feindlichen Linien.</p>
+    <div class="fj-grid">
+      <div class="fj-badge">🪂</div>
+      <div class="fj-content">
+        <h3>Die Elitetruppe des Heeres</h3>
+        <p>
+          Die Fallschirmjäger der Bundeswehr gehören zu den kampfkräftigsten und vielseitigsten Kräften des deutschen Heeres.
+          Sie sind spezialisiert auf Luftlandeeinsätze, werden per Fallschirm oder Hubschrauber in den Einsatz gebracht
+          und können eigenständig tief im Feindgebiet operieren.
+        </p>
+        <p>
+          Stationiert vor allem in der <strong>Luftlandebrigade 1</strong> in Saarlouis, meistern Fallschirmjäger
+          extreme körperliche und psychische Belastungen. Ihre Einsätze reichen von schnellen Angriffs-
+          und Aufklärungsoperationen bis hin zu humanitären Missionen im Ausland.
+        </p>
+        <div class="fj-facts">
+          <span class="fj-fact">Luftlandebrigade 1</span>
+          <span class="fj-fact">Saarlouis & Zweibrücken</span>
+          <span class="fj-fact">NATO Response Force</span>
+          <span class="fj-fact">Fallschirmsprungausbildung</span>
+          <span class="fj-fact">VJTF-Bereitschaft</span>
         </div>
       </div>
     </div>
