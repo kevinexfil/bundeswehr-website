@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bundeswehr – Gemeinsam stark</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --olive:   #4a5c2f;
+      --dark:    #1c2211;
+      --sand:    #c8b97a;
+      --light:   #f4f1e8;
+      --gray:    #5a5a5a;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--light);
+      color: #222;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 60px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    nav .logo .iron-cross {
+      font-size: 1.6rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav ul a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    nav ul a:hover { color: var(--sand); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--olive) 100%);
+      color: #fff;
+      text-align: center;
+      padding: 6rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .hero h1 span { color: var(--sand); }
+    .hero p {
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      opacity: 0.85;
+      position: relative;
+    }
+    .hero .btn {
+      display: inline-block;
+      background: var(--sand);
+      color: var(--dark);
+      padding: 0.75rem 2.2rem;
+      border-radius: 4px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: opacity 0.2s;
+      position: relative;
+    }
+    .hero .btn:hover { opacity: 0.85; }
+
+    /* ── STATS BAR ── */
+    .stats {
+      background: var(--olive);
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 1.5rem 1rem;
+      color: #fff;
+      gap: 1rem;
+    }
+    .stat { text-align: center; }
+    .stat .num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--sand);
+    }
+    .stat .label { font-size: 0.85rem; opacity: 0.85; }
+
+    /* ── SECTION ── */
+    section { padding: 4rem 2rem; }
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--gray);
+      margin-bottom: 3rem;
+    }
+    .underline {
+      width: 60px;
+      height: 4px;
+      background: var(--sand);
+      margin: 0.5rem auto 0;
+      border-radius: 2px;
+    }
+
+    /* ── CARDS ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+      transition: transform 0.2s;
+    }
+    .card:hover { transform: translateY(-4px); }
+    .card-img {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+    }
+    .card-img.heer    { background: linear-gradient(135deg, #3d5226, #6b8c42); }
+    .card-img.marine  { background: linear-gradient(135deg, #1a3a5c, #2e6da4); }
+    .card-img.luft    { background: linear-gradient(135deg, #2c3e50, #4a6fa5); }
+    .card-img.cyber   { background: linear-gradient(135deg, #1a1a2e, #16213e); color: #0ff; font-size: 3rem; }
+    .card-body { padding: 1.25rem 1.5rem; }
+    .card-body h3 { font-size: 1.1rem; color: var(--dark); margin-bottom: 0.5rem; }
+    .card-body p  { font-size: 0.9rem; color: var(--gray); line-height: 1.6; }
+
+    /* ── QUOTE ── */
+    .quote-section {
+      background: var(--dark);
+      color: #fff;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    blockquote {
+      font-size: clamp(1.1rem, 3vw, 1.6rem);
+      font-style: italic;
+      max-width: 750px;
+      margin: 0 auto;
+      line-height: 1.7;
+      opacity: 0.9;
+    }
+    blockquote::before { content: '\201C'; font-size: 3rem; color: var(--sand); line-height: 0; vertical-align: -0.6rem; margin-right: 0.2rem; }
+    blockquote::after  { content: '\201D'; font-size: 3rem; color: var(--sand); line-height: 0; vertical-align: -0.6rem; margin-left: 0.2rem; }
+    .quote-author { margin-top: 1.5rem; color: var(--sand); font-weight: 700; letter-spacing: 1px; }
+
+    /* ── VALUES ── */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .value-item {
+      text-align: center;
+      padding: 2rem 1rem;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .value-item .icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .value-item h4 { font-size: 1rem; color: var(--dark); font-weight: 700; margin-bottom: 0.4rem; }
+    .value-item p  { font-size: 0.85rem; color: var(--gray); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: #aaa;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.85rem;
+    }
+    footer strong { color: var(--sand); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">
+      <span class="iron-cross">✠</span>
+      BUNDESWEHR
+    </div>
+    <ul>
+      <li><a href="#truppen">Truppengattungen</a></li>
+      <li><a href="#werte">Werte</a></li>
+      <li><a href="#karriere">Karriere</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <h1>Wir. Dienen. <span>Deutschland.</span></h1>
+    <p>Die Bundeswehr schützt Frieden, Freiheit und die Sicherheit unserer Bürgerinnen und Bürger – im Inland wie im Auslandseinsatz.</p>
+    <a href="#truppen" class="btn">Mehr erfahren</a>
+  </header>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat"><div class="num">180.000+</div><div class="label">Aktive Soldatinnen & Soldaten</div></div>
+    <div class="stat"><div class="num">6</div><div class="label">Teilstreitkräfte</div></div>
+    <div class="stat"><div class="num">30+</div><div class="label">Länder im NATO-Verbund</div></div>
+    <div class="stat"><div class="num">60+</div><div class="label">Jahre Dienst für den Frieden</div></div>
+  </div>
+
+  <!-- TRUPPENGATTUNGEN -->
+  <section id="truppen">
+    <div class="section-title">Truppengattungen</div>
+    <div class="underline"></div>
+    <p class="section-sub">Vier Bereiche – eine Mission: Sicherheit für Deutschland und seine Verbündeten.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-img heer">🪖</div>
+        <div class="card-body">
+          <h3>Heer</h3>
+          <p>Das Heer ist die Landstreitkraft der Bundeswehr. Infanterie, Panzertruppe und Gebirgsjäger sichern den Boden – im In- und Ausland.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img marine">⚓</div>
+        <div class="card-body">
+          <h3>Marine</h3>
+          <p>Die Deutsche Marine schützt Seewege, sichert Häfen und beteiligt sich an NATO-Marineoperationen auf allen Weltmeeren.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img luft">✈️</div>
+        <div class="card-body">
+          <h3>Luftwaffe</h3>
+          <p>Kampfjets, Transporthubschrauber und Drohnen – die Luftwaffe sichert den deutschen Luftraum und unterstützt Bodentruppen.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img cyber">💻</div>
+        <div class="card-body">
+          <h3>Cyber & Informationsraum</h3>
+          <p>Moderne Kriege werden auch digital geführt. Die CIR-Teilstreitkraft schützt Deutschlands Netzwerke und kritische Infrastruktur.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZITAT -->
+  <div class="quote-section">
+    <blockquote>
+      Der Soldat kämpft nicht, weil er hasst, was vor ihm liegt – sondern weil er liebt, was hinter ihm liegt.
+    </blockquote>
+    <div class="quote-author">— G. K. Chesterton</div>
+  </div>
+
+  <!-- WERTE -->
+  <section id="werte" style="background:#f9f6ee;">
+    <div class="section-title">Unsere Werte</div>
+    <div class="underline"></div>
+    <p class="section-sub">Die Bundeswehr verpflichtet sich dem Leitbild des Staatsbürgers in Uniform.</p>
+    <div class="values-grid">
+      <div class="value-item">
+        <div class="icon">🤝</div>
+        <h4>Kameradschaft</h4>
+        <p>Gegenseitiger Respekt und Zusammenhalt in jeder Lage.</p>
+      </div>
+      <div class="value-item">
+        <div class="icon">⚖️</div>
+        <h4>Integrität</h4>
+        <p>Ehrlichkeit gegenüber Vorgesetzten, Kameraden und sich selbst.</p>
+      </div>
+      <div class="value-item">
+        <div class="icon">🛡️</div>
+        <h4>Tapferkeit</h4>
+        <p>Mut zum Handeln, auch unter größtem Druck und Gefahr.</p>
+      </div>
+      <div class="value-item">
+        <div class="icon">🗺️</div>
+        <h4>Dienst am Volk</h4>
+        <p>Schutz der Bevölkerung als höchste Pflicht und Ehre.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KARRIERE -->
+  <section id="karriere">
+    <div class="section-title">Karriere bei der Bundeswehr</div>
+    <div class="underline"></div>
+    <p class="section-sub">Vom Zeit- bis zum Berufssoldaten – die Bundeswehr bietet vielfältige Laufbahnen.</p>
+    <div class="cards" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+      <div class="card">
+        <div class="card-body" style="padding:2rem;">
+          <h3>🎓 Ausbildung & Studium</h3>
+          <p>Über 40 Berufsbilder und ein kostenloses Studium an einer der Bundeswehr-Universitäten in München oder Hamburg.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body" style="padding:2rem;">
+          <h3>🌍 Auslandseinsätze</h3>
+          <p>Friedensmissionen in Mali, Kosovo oder dem Libanon – internationales Engagement für globale Stabilität.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body" style="padding:2rem;">
+          <h3>💪 Sport & Fitness</h3>
+          <p>Körperliche Fitness ist Kern jeder militärischen Laufbahn. Erstklassige Sportanlagen und Förderung von Leistungssportlern.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>✠ Bundeswehr</strong> – Gemeinsam stark für Deutschland</p>
+    <p style="margin-top:0.5rem;">Diese Seite ist eine inoffizielle Demo-Website &nbsp;|&nbsp; Erstellt mit Claude Code</p>
+  </footer>
+
+</body>
+</html>
